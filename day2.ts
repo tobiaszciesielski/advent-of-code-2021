@@ -22,3 +22,26 @@ for (const step of steps) {
 }
 
 console.log(position[0] * position[1]);
+
+// part 2
+
+const positionWithAim = [0, 0, 0];
+
+for (const step of steps) {
+  const { direction, unit } = step;
+
+  switch (direction) {
+    case "up":
+      positionWithAim[2] = positionWithAim[2] - unit;
+      break;
+    case "down":
+      positionWithAim[2] = positionWithAim[2] + unit;
+      break;
+    case "forward":
+      positionWithAim[1] = positionWithAim[1] + unit;
+      positionWithAim[0] += positionWithAim[2] * unit;
+      break;
+  }
+}
+
+console.log(positionWithAim[0] * positionWithAim[1]);
