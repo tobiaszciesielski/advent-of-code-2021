@@ -6,6 +6,11 @@ export function readColumnOfNumbers(fileName: string): number[] {
   return file.split("\n").map((number) => +number);
 }
 
+export function readColumn(fileName: string): string[] {
+  const file = readFileSync(`inputs/${fileName}`, "utf8");
+  return file.split("\n");
+}
+
 export function readTextNumberPairs(fileName: string): SubmarineStep[] {
   const file = readFileSync(`inputs/${fileName}`, "utf8");
   return file.split("\n").map((line) => {
