@@ -1,6 +1,7 @@
+import { Bit } from "./types";
 import { readColumn } from "./utils";
 
-const bitArray2Decimal = (bitArray: Array<"1" | "0">): number => {
+const bitArray2Decimal = (bitArray: Bit[]): number => {
   return parseInt(bitArray.join(""), 2);
 };
 
@@ -9,7 +10,7 @@ const gammaRate = Array.from({ length: bits[0].length }).map(
   (_: any, index: number) => {
     const bitCount = bits.reduce(
       (acc, bit) => {
-        const digit = bit[index] as "1" | "0";
+        const digit = bit[index] as Bit;
         acc[digit]++;
         return acc;
       },
