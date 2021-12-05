@@ -18,3 +18,17 @@ export function readTextNumberPairs(fileName: string): SubmarineStep[] {
     return { direction: direction as SubmarineDirection, unit: +unit };
   });
 }
+
+export function readBingoData(fileName: string): [number[], number[][][]] {
+  const file = readFileSync(`inputs/${fileName}`, "utf8");
+  const [numbers, ...boards] = file.split("\n\n");
+  const formattedBoards = boards.map((board) =>
+    board.split("\n").map((line) =>
+      line
+        .split(" ")
+        .filter((number) => !!number)
+        .map((number) => +number)
+    )
+  );
+  return [numbers.split(",").map((number) => +number), formattedBoards];
+}
